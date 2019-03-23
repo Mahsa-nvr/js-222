@@ -1,8 +1,23 @@
 import React from 'react';
-import {Container, Form, FormGroup, Label, Input ,Button} from 'reactstrap';
+import {Container, Form, FormGroup, Label,Input ,Button} from 'reactstrap';
+import {HandleChange} from "./Utility";
+
+
 
 class Create extends React.Component{
+  
+  state={
+    username : '',
+    password : ''
+  };
+
+  save = (props) => {
+    this.props.history.push('/chat');
+  }
+  
+
     render(){
+      
         return(
            <Container>
                <h1>
@@ -11,14 +26,17 @@ class Create extends React.Component{
                <Form>
         <FormGroup>
           <Label for="Username">Username :</Label>
-          <Input type="text" name="username" id="Username" placeholder="Enter Username" />
+          <Input type='text' name='username' id='Username' placeholder="Enter Username" value={this.state.username} onChange={(e)=>HandleChange.call(this,e)} />
+          
         </FormGroup>
         <FormGroup>
           <Label for="Password">Password :</Label>
-          <Input type="password" name="password" id="Password" placeholder="Enter Password" />
+          <Input type="password" name="password" id="Password" placeholder="Enter Password" value={this.state.password} onChange={(e)=> HandleChange.call(this, e)}/>
         </FormGroup>
         </Form>
-        <Button color="primary" size="SM" className="b2" >save</Button>
+        <Button onClick={this.save} color="primary" size="SM" className="b2" >save
+    
+        </Button>
         
            </Container>
         );
