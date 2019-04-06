@@ -13,23 +13,14 @@ class Create extends React.Component{
   
       save =() => {
     
-  
-         // create
-         localStorage.setItem("username", this.username.value);
-         localStorage.setItem("password", this.password.value);
+        if ( this.state.username  && this.state.password ) {
+         localStorage.setItem("username", this.state.username )
+         localStorage.setItem("password", this.state.password);
          this.props.history.push('/');
-         /*if(this.state.username  && this.state.password ) {
-        //console.log(this.state.username);
-          localStorage.setItem('is_create', 'true');
-          
-      }else alert('please enter username or password');*/
-  }
-
+         }else alert('please enter username or password')
   
- 
-  
-  
-
+}
+      
     render(){
       
         return(
