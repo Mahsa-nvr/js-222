@@ -12,8 +12,17 @@ class Create extends React.Component{
   };
 
   save = (props) => {
-    this.props.history.push('/chat');
-  }
+         // create
+         if(this.state.username  && this.state.password ) {
+        //console.log(this.state.username);
+          localStorage.setItem('is_create', 'true');
+          this.props.history.push('/chat');
+      }else alert('username or password not correct');
+  };
+
+  
+ 
+  
   
 
     render(){
@@ -42,4 +51,3 @@ class Create extends React.Component{
         );
     }
 }
-export default Create;
