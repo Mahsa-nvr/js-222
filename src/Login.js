@@ -12,12 +12,14 @@ class Login extends React.Component{
     }
   }
 
-
-
   continue = (props) => {
-    this.props.history.push('/chat');
-    //console.log(this.state.username);
-  };
+    if ( this.state.username===localStorage.getItem("username" )  && 
+    this.state.password===localStorage.getItem("password") )
+      {
+    this.props.history.push('/chat')
+  } else alert('please create your accaount');
+  }
+   
 
   create = (props) => {
     this.props.history.push('/create');
