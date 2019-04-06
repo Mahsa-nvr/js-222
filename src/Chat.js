@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container,Button} from 'reactstrap';
-import {Launcher} from 'react-chat-window'
+import {Launcher} from 'react-chat-window';
+import axios from 'axios';
 
 class Chat extends  React.Component{
     constructor() {
@@ -9,6 +10,20 @@ class Chat extends  React.Component{
           messageList: []
           
         };
+      }
+
+
+      componentDidMount() {
+        axios({
+          url: `http://localhost:8000/question`
+          
+        }).then(Response => {
+         this.setState({
+           messageList: Response.data
+         })
+        }).catch(error => {
+          console.log(error);
+        })
       }
 
 

@@ -8,6 +8,9 @@ class Logoff extends React.Component{
             <h1>
                 LOGOFF
             </h1>
+            <h2>
+                Thanks for your chat
+            </h2>
             </Container>
         );
     }
