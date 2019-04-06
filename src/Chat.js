@@ -33,9 +33,10 @@ class Chat extends  React.Component{
 
     _onMessageWasSent(message) {
         this.setState({
-          messageList: [...this.state.messageList, message]
-        })
-      }
+
+            prevState:this.state.prevState+1
+           })
+          }
 
 
       _sendMessage(text) {
