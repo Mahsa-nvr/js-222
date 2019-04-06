@@ -51,3 +51,6 @@ class Create extends React.Component{
         );
     }
 }
+
+
+export default Create;
