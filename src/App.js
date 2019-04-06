@@ -7,6 +7,10 @@ import Logoff from './Logoff';
 
 
 export default class App extends React.Component {
+    componentDidMount(){
+     document.title='CHAT APP';
+    }
+    
     render() {
         return (
             <div>
@@ -19,4 +23,3 @@ export default class App extends React.Component {
             </div> 
         )
     }
-}
