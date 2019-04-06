@@ -1,0 +1,15 @@
+
+{
+  "question":[
+  {"type": "text", "author": "them", "data": { "text": "Hello"} },
+  {"type": "text", "author": "them", "data": { "text": "How are you?"} },
+  {"type": "text", "author": "them", "data": { "text": "What's your name?"} },
+  {"type": "text", "author": "them", "data": { "text": "How old are you"} },
+  {"type": "text", "author": "them", "data": { "text": "where are you from?"} },
+  {"type": "text", "author": "them", "data": { "text": "How do you like to be comforted when you're sad or upset?"} },
+  {"type": "text", "author": "them", "data": { "text": "What's your all-time favorite memory?"} },
+  {"type": "text", "author": "them", "data": { "text": "What's your biggest fear?"} },
+  {"type": "text", "author": "them", "data": { "text": "What would be your perfect day? "} },
+  {"type": "text", "author": "them", "data": { "text": "Have a good time , finish "} }
+  ]
+}
