@@ -7,8 +7,10 @@ class Chat extends  React.Component{
     constructor() {
         super();
         this.state = {
-          messageList: []
-          
+          messageList: [],
+          tempMessageList:[],
+          currentStep: 0,
+          isOpen:false,
         };
       }
 
@@ -19,8 +21,13 @@ class Chat extends  React.Component{
           
         }).then(Response => {
          this.setState({
-           messageList: Response.data
-         })
+           tempMessageList: Response.data
+         }, 
+         ()=>{
+          this.setState({
+           messageList : [...this.state.messageList, this.state.tempMessageList[this.state.currentStep]]
+          })
+           })   
         }).catch(error => {
           console.log(error);
         })
@@ -31,47 +38,63 @@ class Chat extends  React.Component{
         this.props.history.push('/logoff');
     }
 
-    _onMessageWasSent(message) {
+   _onMessageWasSent(message) {
         this.setState({
-
-            prevState:this.state.prevState+1
-           })
-          }
-
-
-      _sendMessage(text) {
-        if (text.length > 0) {
-          this.setState({
-            messageList: [...this.state.messageList, {
-              author: 'them',
-              type: 'text',
-              data: { text }
-            }]
-          })
-        }
+        messageList : [...this.state.messageList, message],
+        currentStep:this.state.currentStep+1
+                },()=>{
+                    if(this.state.tempMessageList.length > this.state.currentStep){
+                        
+                        this.setState({                      
+                            messageList: [...this.state.messageList, this.state.tempMessageList[this.state.currentStep]]
+                            
+                          })
+                        
+                          
+                    }else{
+                        
+                    }
+                  
       }
-    
-    
+        )
+    }
+
+    start = () => {
+        this.setState({
+            isOpen:!this.state.isOpen
+        })
+    }
+
+     
 
  render() {
+     const isOpen =  this.state;
      return(
         
          <Container>
 
 
-<Launcher 
+<Launcher
+isOpen={this.state.isOpen}
         agentProfile={{
           teamName: 'robot chat',
-          //imageUrl: 'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png'
         }}
         onMessageWasSent={this._onMessageWasSent.bind(this)}
         messageList={this.state.messageList}
         showEmoji
     
       />
+      
 
 
-             <Button className="b5" color="primary" block>Start</Button>
+             
+                   {isOpen && 
+                  <Button className="b5" color="primary" onClick={this.start} block>
+                           Start
+                           </Button>
+                           }
+                           
+             
             <Button onClick={this.logoff} color="primary"  className="b4" block>Logoff</Button>
 
          </Container>

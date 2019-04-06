@@ -10,15 +10,20 @@ class Create extends React.Component{
     username : '',
     password : ''
   };
-
-  save = (props) => {
+  
+      save =() => {
+    
+  
          // create
-         if(this.state.username  && this.state.password ) {
+         localStorage.setItem("username", this.username.value);
+         localStorage.setItem("password", this.password.value);
+         this.props.history.push('/');
+         /*if(this.state.username  && this.state.password ) {
         //console.log(this.state.username);
           localStorage.setItem('is_create', 'true');
-          this.props.history.push('/chat');
-      }else alert('username or password not correct');
-  };
+          
+      }else alert('please enter username or password');*/
+  }
 
   
  
